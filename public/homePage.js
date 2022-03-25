@@ -34,7 +34,7 @@ addMoneyForm.addMoneyCallback = (data) => {
          ProfileWidget.showProfile(callback.data);
          addMoneyForm.setMessage(false, 'Кошелек пополнен');
       } else {
-         addMoneyForm.setMessage(!callback.success, callback.data);
+         addMoneyForm.setMessage(!callback.success, 'Укажите валюту');
       }
    });
 };
@@ -45,7 +45,7 @@ addMoneyForm.conversionMoneyCallback = (data) => {
          ProfileWidget.showProfile(callback.data);
          addMoneyForm.setMessage(false, 'Успешно сконвертирована валюта');
       } else {
-         addMoneyForm.setMessage(!callback.success, callback.data);
+         addMoneyForm.setMessage(!callback.success, 'Укажите из какой валюты и в какую вы хотите сконвертировать');
       }
    })
 }
@@ -56,7 +56,7 @@ addMoneyForm.sendMoneyCallback = (data) => {
          ProfileWidget.showProfile(callback.data);
          addMoneyForm.setMessage(false, 'Перевод выполнен');
       } else {
-         addMoneyForm.setMessage(!callback.success, callback.data);
+         addMoneyForm.setMessage(!callback.success, 'Укажите кому вы хотите перевести деньги и в какой валюте');
       }
    })
 }
@@ -78,7 +78,7 @@ favoritesTableBody.addUserCallback = (data) => {
          addMoneyForm.updateUsersList(callback.data);
          favoritesTableBody.setMessage(false, 'Контакт успешно добавлен в избранное');
       } else {
-         favoritesTableBody.setMessage(!callback.success, callback.data);
+         favoritesTableBody.setMessage(!callback.success, 'Введите ID и имя контакта');
       }
    });
 };
@@ -91,8 +91,6 @@ favoritesTableBody.removeUserCallback = (data) => {
          favoritesTableBody.fillTable(callback.data);
          addMoneyForm.updateUsersList(callback.data);
          favoritesTableBody.setMessage(false, 'Контакт успешно удален');
-      } else {
-         favoritesTableBody.setMessage(!callback.success, callback.data);
       }
    });
 }

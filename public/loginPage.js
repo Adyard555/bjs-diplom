@@ -2,8 +2,9 @@ const userForm = new UserForm();
 
 userForm.loginFormCallback = function (loginData) {
    let loginCallback = (loginResponse) => {
+      console.log(loginResponse);
       if (!loginResponse.success) {
-         this.setLoginErrorMessage('Ошибка при вводе данных или данного пользователя не существует!');
+         this.setLoginErrorMessage(loginResponse.error);
       } else location.reload();
    };
 
@@ -13,7 +14,7 @@ userForm.loginFormCallback = function (loginData) {
 userForm.registerFormCallback = function (registerData) {
    let registerCallback = (registerResponse) => {
       if (!registerResponse.success) {
-         this.setRegisterErrorMessage('Данные введены не правильно, проверьте правильно ли вы указали свои данные!');
+         this.setRegisterErrorMessage(registerResponse.error);
       } else location.reload();
    };
 
