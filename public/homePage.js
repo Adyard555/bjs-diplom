@@ -32,9 +32,9 @@ addMoneyForm.addMoneyCallback = (data) => {
    ApiConnector.addMoney(data, callback => {
       if (callback.success === true) {
          ProfileWidget.showProfile(callback.data);
-         addMoneyForm.setMessage(false, 'Кошелек пополнен');
+         addMoneyForm.setMessage(true, 'Кошелек пополнен');
       } else {
-         addMoneyForm.setMessage(!callback.success, 'Укажите валюту');
+         addMoneyForm.setMessage(false, 'Укажите валюту');
       }
    });
 };
@@ -43,9 +43,9 @@ addMoneyForm.conversionMoneyCallback = (data) => {
    ApiConnector.convertMoney(data, callback => {
       if (callback.success === true) {
          ProfileWidget.showProfile(callback.data);
-         addMoneyForm.setMessage(false, 'Успешно сконвертирована валюта');
+         addMoneyForm.setMessage(true, 'Успешно сконвертирована валюта');
       } else {
-         addMoneyForm.setMessage(!callback.success, 'Укажите из какой валюты и в какую вы хотите сконвертировать');
+         addMoneyForm.setMessage(false, 'Укажите из какой валюты и в какую вы хотите сконвертировать');
       }
    })
 }
@@ -54,9 +54,9 @@ addMoneyForm.sendMoneyCallback = (data) => {
    ApiConnector.transferMoney(data, callback => {
       if (callback.success === true) {
          ProfileWidget.showProfile(callback.data);
-         addMoneyForm.setMessage(false, 'Перевод выполнен');
+         addMoneyForm.setMessage(true, 'Перевод выполнен');
       } else {
-         addMoneyForm.setMessage(!callback.success, 'Укажите кому вы хотите перевести деньги и в какой валюте');
+         addMoneyForm.setMessage(false, 'Укажите кому вы хотите перевести деньги и в какой валюте');
       }
    })
 }
@@ -76,9 +76,9 @@ favoritesTableBody.addUserCallback = (data) => {
          favoritesTableBody.clearTable();
          favoritesTableBody.fillTable(callback.data);
          addMoneyForm.updateUsersList(callback.data);
-         favoritesTableBody.setMessage(false, 'Контакт успешно добавлен в избранное');
+         favoritesTableBody.setMessage(true, 'Контакт успешно добавлен в избранное');
       } else {
-         favoritesTableBody.setMessage(!callback.success, 'Введите ID и имя контакта');
+         favoritesTableBody.setMessage(false, 'Введите ID и имя контакта');
       }
    });
 };
@@ -90,7 +90,7 @@ favoritesTableBody.removeUserCallback = (data) => {
          favoritesTableBody.clearTable();
          favoritesTableBody.fillTable(callback.data);
          addMoneyForm.updateUsersList(callback.data);
-         favoritesTableBody.setMessage(false, 'Контакт успешно удален');
+         favoritesTableBody.setMessage(true, 'Контакт успешно удален');
       }
    });
 }
