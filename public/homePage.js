@@ -23,7 +23,7 @@ ApiConnector.getStocks(callback => {
 });
 
 setInterval(function () {
-   ApiConnector.getStocks
+   ApiConnector.getStocks()
 }, 1000);
 
 
@@ -34,7 +34,7 @@ addMoneyForm.addMoneyCallback = (data) => {
          ProfileWidget.showProfile(callback.data);
          addMoneyForm.setMessage(true, 'Кошелек пополнен');
       } else {
-         addMoneyForm.setMessage(false, 'Укажите валюту');
+         addMoneyForm.setMessage(false, callback.error);
       }
    });
 };
@@ -45,7 +45,7 @@ addMoneyForm.conversionMoneyCallback = (data) => {
          ProfileWidget.showProfile(callback.data);
          addMoneyForm.setMessage(true, 'Успешно сконвертирована валюта');
       } else {
-         addMoneyForm.setMessage(false, 'Укажите из какой валюты и в какую вы хотите сконвертировать');
+         addMoneyForm.setMessage(false, callback.error);
       }
    })
 }
@@ -56,7 +56,7 @@ addMoneyForm.sendMoneyCallback = (data) => {
          ProfileWidget.showProfile(callback.data);
          addMoneyForm.setMessage(true, 'Перевод выполнен');
       } else {
-         addMoneyForm.setMessage(false, 'Укажите кому вы хотите перевести деньги и в какой валюте');
+         addMoneyForm.setMessage(false, callback.error);
       }
    })
 }
@@ -78,7 +78,7 @@ favoritesTableBody.addUserCallback = (data) => {
          addMoneyForm.updateUsersList(callback.data);
          favoritesTableBody.setMessage(true, 'Контакт успешно добавлен в избранное');
       } else {
-         favoritesTableBody.setMessage(false, 'Введите ID и имя контакта');
+         favoritesTableBody.setMessage(false, callback.error);
       }
    });
 };
